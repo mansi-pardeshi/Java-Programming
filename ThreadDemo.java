@@ -1,51 +1,29 @@
-class Thread1 extends Thread
+public class ThreadDemo extends Thread
 {
-	int n;
-	Thread1(int n)
-	{
-		this.n = n;
-	}
-	
-	public void run()
-	{
-		int sum = 100;
-		for(int i=0 ; i<=this.n ; i++)
-		{
-			sum= sum + i;
-			System.out.println("sum : "+sum);
-		}
-		
-	}
+    public void run()
+    {
+        try{
+            for(int i=100;i>0;i--)
+            {
+                System.out.println(i);
+                Thread.sleep(100);
+            }
+        }
+        catch(Exception e)
+        {
+            System.out.println(e);
+        }
+    }   
 }
-
-class Thread2 extends Thread
-{
-	int n;
-	Thread2(int n)
-	{
-		this.n = n;
-	}
-	
-	public void run()
-	{
-		int sub = 100;
-		for(int i=this.n ; i>=0 ; i--)
-		{
-			sub = sub - i;
-            System.out.println("substraction : "+sub);
-		}
-		
-	}
-}
-
 class Main
 {
-	public static void main(String args[])
-	{
-		Thread1 t1 = new Thread1(10);
-		t1.start();
-		
-		Thread2 t2 = new Thread2(10);
-		t2.start();
-	}
+    public static void main(String args[])
+    {
+        ThreadDemo td = new ThreadDemo();
+        td.start();
+        System.out.println("Thread Name Before Changing : "+td.getName());
+        td.setName("Mansi");
+        System.out.println("Thread Name After Changing : "+td.getName());
+    }
 }
+
